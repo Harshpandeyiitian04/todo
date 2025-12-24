@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
   </head>
   <body>
-    TODO PAGE
     <div class="TodoPage">
       <div class="Todobox">
         <div class="post">
@@ -19,9 +18,10 @@
             {%csrf_token%}
             <div class="heading">Todo</div>
             <div class="logout">
-                <a href="{% url 'logout' %}">
-                    Logout
-                </a>
+              <a href="{% url 'logout' %}"> 
+                    <img src="{% static 'images/logout/5844.jpg' %}" alt="Logo" width="120" height="120">
+
+              </a>
             </div>
             <div class="line"></div>
             <div class="feild">
@@ -44,15 +44,17 @@
             {%for task in tasks%}
             <div class="task">
               <div class="title">{{task.title}}</div>
-              <div class="edit">
-                <a href="{%url 'edit' task.srno%}">Edit</a>
-              </div>
-              <div class="delete">
-                <a href="{%url 'delete' task.srno%}">Delete</a>
-              </div>
-              {%empty%}
-              <div class="empty">
-                <p>No tasks yest</p>
+              <div class="actions">
+                <div class="edit">
+                  <a href="{% url 'edit' task.srno %}">
+                    <img src="{% static 'images/edit.png' %}" alt="Logo" width="120" height="120">
+                  </a>
+                </div>
+                <div class="delete">
+                  <a href="{% url 'delete' task.srno %}">
+                    <img src="{% static 'images/delete.jpg' %}" alt="Logo" width="120" height="120">
+                  </a>
+                </div>
               </div>
             </div>
             {%endfor%}
