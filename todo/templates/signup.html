@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+  </head>
+  <body>
+    <div class="signup_login">
+      <div class="signupbox">
+        <div class="post">
+          {% if error %}
+          <p style="color: red; text-align: center">{{ error }}</p>
+          {% endif %}
+
+          <form action="" method="POST">
+            {%csrf_token%}
+            <div class="heading">Signup</div>
+            <div class="line"></div>
+            <div class="feild">
+              <b> Username </b>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your username..."
+                class="inp"
+                required
+              />
+            </div>
+            <div class="feild">
+              <b> Email </b>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="you@mail.com"
+                class="inp"
+                required
+              />
+            </div>
+            <div class="feild">
+              <b> Password </b>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter password..."
+                class="inp"
+                required
+              />
+            </div>
+            <div class="feild">
+              <input type="submit" value="Signup" class="submitbutton" />
+            </div>
+          </form>
+          <div class="feild">
+            <b> Already have an account? </b>
+            <br />
+            <a href="/login" class="anc"> Login </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

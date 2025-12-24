@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+  </head>
+  <body>
+    <div class="Editpage">
+      <div class="Editbox">
+        <div class="post">
+          {% if error %}
+          <p style="color: red; text-align: center">{{ error }}</p>
+          {% endif %}
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="heading">Edit Task</div>
+            <div class="line"></div>
+
+            <div class="feild">
+              <b> Change The Task </b>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                value="{{task.title}}"
+                class="inp"
+                required
+              />
+            </div>
+
+            <div class="feild">
+              <input type="submit" value="Update" class="submitbutton" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

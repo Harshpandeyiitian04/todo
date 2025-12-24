@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+  </head>
+  <body>
+    TODO PAGE
+    <div class="TodoPage">
+      <div class="Todobox">
+        <div class="post">
+          {% if error %}
+          <p style="color: red; text-align: center">{{ error }}</p>
+          {% endif %}
+          <form action="" method="POST">
+            {%csrf_token%}
+            <div class="heading">Todo</div>
+            <div class="logout">
+                <a href="{% url 'logout' %}">
+                    Logout
+                </a>
+            </div>
+            <div class="line"></div>
+            <div class="feild">
+              <b> Task </b>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Enter your Task..."
+                class="inp"
+                required
+              />
+            </div>
+            <div class="feild">
+              <input type="submit" value="Save" class="submitbutton" />
+            </div>
+          </form>
+          <div class="tasks">
+            <h1>Tasks</h1>
+            {%for task in tasks%}
+            <div class="task">
+              <div class="title">{{task.title}}</div>
+              <div class="edit">
+                <a href="{%url 'edit' task.srno%}">Edit</a>
+              </div>
+              <div class="delete">
+                <a href="{%url 'delete' task.srno%}">Delete</a>
+              </div>
+              {%empty%}
+              <div class="empty">
+                <p>No tasks yest</p>
+              </div>
+            </div>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
