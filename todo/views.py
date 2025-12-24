@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from todo.models import Todo
 
 def signup(request):
-    if request.user.is_authenticated:   # ✅ Correct way
+    if request.user.is_authenticated:
         return redirect('todo')
 
     if request.method == 'POST':
@@ -17,7 +17,7 @@ def signup(request):
             return render(request, 'signup.html', {'error': 'User already exists'})
 
         user = User.objects.create_user(username=name, email=email, password=password)
-        login(request, user)  # auto login after signup
+        login(request, user) 
         return redirect('todo')
 
     return render(request, 'signup.html')
